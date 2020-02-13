@@ -23,8 +23,54 @@ public class main {
      输入: [1,3,5,6], 0
      输出: 0
      */
-    public int searchInsert(int[] nums, int target) {
-        return 0;
+
+    public static void main(String[] args) {
+        int[] nums = new int[]{1, 3, 5, 6};
+        int target = 5;
+        System.out.println(searchInsert(nums, target));
+        target = 2;
+        System.out.println(searchInsert(nums, target));
+        target = 7;
+        System.out.println(searchInsert(nums, target));
+        target = 0;
+        System.out.println(searchInsert(nums, target));
+        nums = new int[]{1, 3, 5, 6,8,11,23,43,55,65,72,85,93,111, 113, 115, 116,118,121,132
+                ,153,164,1111,1123,1143,1155,1165,1172,1185,1193};
+        target=1193;
+        System.out.println(searchInsert(nums, target));
+        nums = new int[]{1};
+        target=1;
+        System.out.println(searchInsert(nums, target));
+    }
+
+    public static int searchInsert(int[] nums, int target) {
+        int start = 0;
+        int end = nums.length;
+        int middle = (start + end) / 2;
+        int count=0;
+        while (middle != end && middle != start) {
+            if (nums[middle] == target) {
+                System.out.println("count:"+count);
+                return middle;
+            }
+
+            if (nums[middle] > target) {
+                end = middle;
+            } else {
+                start = middle;
+            }
+            middle = (start + end) / 2;
+            count++;
+        }
+        System.out.println("count:"+count);
+
+        if(nums[middle]==target){
+            return middle;
+        }else if (nums[middle] > target) {
+            return start;
+        } else {
+            return end;
+        }
     }
 
 
