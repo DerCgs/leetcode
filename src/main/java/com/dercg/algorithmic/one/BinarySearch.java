@@ -5,7 +5,7 @@ import com.dercg.algorithmic.one.towsumfast.LoadDataFile;
 import java.io.IOException;
 
 public class BinarySearch {
-    public static int search(int key, int[] a) {
+    public static int search(int key, Integer[] a) {
         int lo = 0;
         int hi = a.length - 1;
         int count = 0;
@@ -26,7 +26,7 @@ public class BinarySearch {
         return -1;
     }
 
-    public static int normalSearch(int key, int[] a) {
+    public static int normalSearch(int key, Integer[] a) {
         for (int i = 0; i < a.length; i++) {
             if (key == a[i]) {
                 return i;
@@ -36,7 +36,7 @@ public class BinarySearch {
     }
 
     public static void main(String[] args) throws IOException {
-        int[] data = LoadDataFile.loadFile("/Users/changlu/Code/demo/leetcode/src/main/resources/datas/init10000number.txt");
+        Integer[] data = LoadDataFile.loadFile("/Users/changlu/Code/demo/leetcode/src/main/resources/datas/init10000number.txt");
         long start = System.currentTimeMillis();
         System.out.println(search(-9975, data));
         long end = System.currentTimeMillis();

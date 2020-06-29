@@ -7,7 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class LoadDataFile {
-    public static int[] loadFile(String path) throws IOException {
+    public static Integer[] loadFile(String path) throws IOException {
         BufferedReader in = new BufferedReader(new FileReader(path));
         String str;
         StringBuilder sb = new StringBuilder();
@@ -18,7 +18,7 @@ public class LoadDataFile {
         String result = sb.toString();
         String[] strArr = result.split(",");
 
-        int[] dataArr = new int[strArr.length];
+        Integer[] dataArr = new Integer[strArr.length];
 
         for (int i = 0; i < strArr.length; i++) {
             dataArr[i] = Integer.parseInt(strArr[i]);

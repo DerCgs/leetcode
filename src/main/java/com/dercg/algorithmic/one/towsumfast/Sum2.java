@@ -6,7 +6,7 @@ import com.dercg.algorithmic.utils.Utils;
 import java.io.IOException;
 
 public class Sum2 {
-    public static int binaryCount(int[] arr) {
+    public static int binaryCount(Integer[] arr) {
         int count = 0;
         for (int value : arr) {
             if (value > 0) {
@@ -20,7 +20,7 @@ public class Sum2 {
         return count;
     }
 
-    public static int normalCount(int[] arr) {
+    public static int normalCount(Integer[] arr) {
         int count = 0;
         for (int value : arr) {
             if (value > 0) {
@@ -35,7 +35,7 @@ public class Sum2 {
     }
 
     public static void main(String[] args) throws IOException {
-        int[] data = LoadDataFile.loadFile(Utils.getRootPath() + "/src/main/resources/datas/init10000number.txt");
+        Integer[] data = LoadDataFile.loadFile(Utils.getRootPath() + "/src/main/resources/datas/init10000number.txt");
         long start = System.currentTimeMillis();
         System.out.println("init10000number binaryCount result-->" + binaryCount(data));
         long end = System.currentTimeMillis();

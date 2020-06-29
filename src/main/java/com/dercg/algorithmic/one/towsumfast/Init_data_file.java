@@ -5,32 +5,29 @@ import com.dercg.algorithmic.utils.Utils;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class Init_data_file {
     public static void main(String[] args) throws IOException {
         int length = 10000;
-        Set<Integer> set = new HashSet<>();
+        Set<Integer> set = new LinkedHashSet<>();
         Random r = new Random();
         for (int i = 0; i < length; i++) {
             int item = r.nextInt(length);
-            int random = r.nextInt(10);
-            if (random / 2 == 0) {
+//            int random = r.nextInt(10);
+//            if (random / 2 == 0) {
                 set.add(item);
-            } else {
-                set.add(item - length);
-            }
+//            } else {
+//                set.add(item - length);
+//            }
         }
 
         Integer[] arr = new Integer[set.size()];
 
         set.toArray(arr);
-        Arrays.sort(arr);
+//        Arrays.sort(arr);
 
-        String filePath = Utils.getRootPath() + "/src/main/resources/datas/init" + length + "number.txt";
+        String filePath = Utils.getRootPath() + "/src/main/resources/datas/unsort" + length + "number.txt";
         File file = new File(filePath);
         if (!file.exists()) {
             boolean createFileResult = file.createNewFile();
