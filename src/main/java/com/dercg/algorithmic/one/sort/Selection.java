@@ -17,10 +17,13 @@ public class Selection extends Base {
     }
 
     public static void main(String[] args) throws IOException {
-        Integer[] data = LoadDataFile.loadFile("/Users/changlu/Code/demo/leetcode/src/main/resources/datas/unsort10000number.txt");
+        Integer[] data = LoadDataFile.loadFile("/Users/changlu/Code/demo/leetcode/src/main/resources/datas/unsort1000000number.txt");
         Selection s = new Selection();
+        long start = System.currentTimeMillis();
         System.out.println(isSorted(data));
         s.sort(data);
+        long end = System.currentTimeMillis();
         System.out.println(isSorted(data));
+        System.out.println(end - start);
     }
 }
