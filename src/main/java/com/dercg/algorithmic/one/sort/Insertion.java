@@ -18,8 +18,8 @@ public class Insertion extends Base {
     public static void main(String[] args) throws IOException {
         Integer[] data = LoadDataFile.loadFile("/Users/changlu/Code/demo/leetcode/src/main/resources/datas/unsort1000000number.txt");
         Insertion s = new Insertion();
-        long start = System.currentTimeMillis();
         System.out.println(isSorted(data));
+        long start = System.currentTimeMillis();
         s.sort(data);
         long end = System.currentTimeMillis();
         System.out.println(isSorted(data));

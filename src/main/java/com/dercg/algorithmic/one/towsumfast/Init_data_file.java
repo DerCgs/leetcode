@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Init_data_file {
     public static void main(String[] args) throws IOException {
-        int length = 1000000;
+        int length = 10000000;
         Set<Integer> set = new LinkedHashSet<>();
         Random r = new Random();
         for (int i = 0; i < length; i++) {

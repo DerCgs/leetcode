@@ -24,10 +24,10 @@ public class Shell extends Base {
     }
 
     public static void main(String[] args) throws IOException {
-        Integer[] data = LoadDataFile.loadFile("/Users/changlu/Code/demo/leetcode/src/main/resources/datas/unsort1000000number.txt");
+        Integer[] data = LoadDataFile.loadFile("/Users/changlu/Code/demo/leetcode/src/main/resources/datas/unsort" + 10000000 + "number.txt");
         Shell s = new Shell();
-        long start = System.currentTimeMillis();
         System.out.println(isSorted(data));
+        long start = System.currentTimeMillis();
         s.sort(data);
         long end = System.currentTimeMillis();
         System.out.println(isSorted(data));
