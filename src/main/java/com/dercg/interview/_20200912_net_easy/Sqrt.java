@@ -7,7 +7,8 @@ package com.dercg.interview._20200912_net_easy;
  */
 public class Sqrt {
     public static void main(String[] args) {
-        binarySqrt(99, 1e-10);
+
+        System.out.println(iter(4, 1e-10));
     }
 
     // 1、二分查找法
@@ -20,7 +21,8 @@ public class Sqrt {
         mid = (min + max) / 2;
 
         do {
-            if (mid * mid < target) {
+            double item = mid * mid;
+            if (item < target) {
                 min = mid;
             } else {
                 max = mid;

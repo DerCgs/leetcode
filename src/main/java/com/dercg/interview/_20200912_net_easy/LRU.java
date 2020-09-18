@@ -9,14 +9,12 @@ import java.util.Optional;
  * 用java代码实现LRU，因为java中LinkedHashMap已经实现了LRU缓存淘汰算法，故不能使用LinkedHashMap
  */
 public class LRU {
-    //
-
     // 双向链表 + HashMap
     class LRUCache_DLinkedHashMap<k, v> {
         private final int capacity;
         private final HashMap<k, DLinkedNode<k, v>> data = new HashMap<>();
-        private DLinkedNode<k, v> head;
-        private DLinkedNode<k, v> end;
+        private final DLinkedNode<k, v> head;
+        private final DLinkedNode<k, v> end;
 
         public LRUCache_DLinkedHashMap(int capacity) {
             this.capacity = capacity;
