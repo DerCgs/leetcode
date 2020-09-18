@@ -40,6 +40,7 @@ public class main {
         return (int)c;
     }
 
+
     // 动态规划 DP
     // 函数推导出公式
     // G(n),F(i,n)
