@@ -26,10 +26,38 @@ import java.util.List;
  */
 public class main {
     public static void main(String[] args) {
-        System.out.println((new main()).numTree(10));
+        System.out.println((new main()).numTreeCatalan(10));
+        System.out.println((new main()).numTreeDP(10));
+        System.out.println((new main()).numTreeRecursive(10));
     }
 
-    public int numTree(int n) {
+    // 卡塔兰数 C(0)=1,C(n+1)=2(2n+1)/(n+2)C(n)
+    public int numTreeCatalan(int n) {
+        long c = 1;
+        for (int i = 1; i < n; i++) {
+            c = c*2*(2*i+1)/(i+2);
+        }
+        return (int)c;
+    }
+
+    // 动态规划 DP
+    // 函数推导出公式
+    // G(n),F(i,n)
+    public int numTreeDP(int n) {
+        int[] G = new int[n + 1];
+        G[0] = 1;
+        G[1] = 1;
+
+        for (int i = 2; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                G[i] += G[j - 1] * G[i - j];
+            }
+        }
+
+        return G[n];
+    }
+
+    public int numTreeRecursive(int n) {
         return generate(1, n).size();
     }
 
