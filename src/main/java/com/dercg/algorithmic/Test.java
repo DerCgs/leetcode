@@ -1,16 +1,20 @@
 package com.dercg.algorithmic;
 
-import com.google.common.hash.BloomFilter;
-import com.google.common.hash.Funnels;
-import edu.princeton.cs.algs4.Quick;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Test {
     public static void main(String[] args) {
-        BloomFilter<String> bf = BloomFilter.create(Funnels.unencodedCharsFunnel(), 10000, 0.03);
+        Queue<Integer> queue = new LinkedList<>();
 
+        queue.add(3);
+        queue.add(5);
+        queue.add(6);
+        queue.add(2);
+        queue.add(1);
 
-        Integer[] a = new Integer[10];
-
-        Quick.sort(a);
+        while (!queue.isEmpty()) {
+            System.out.println(queue.poll());
+        }
     }
 }
