@@ -1,4 +1,4 @@
-package com.dercg.leetcode.code.a038_countAndSay;
+package com.dercg.leetcode.code.a038_CountAndSay;
 
 public class main {
     /**

@@ -1,4 +1,4 @@
-package com.dercg.leetcode.code.a020_isValid;
+package com.dercg.leetcode.code.a020_ValidParentheses;
 
 import java.util.Stack;
 

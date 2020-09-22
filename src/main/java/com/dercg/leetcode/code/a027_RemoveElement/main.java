@@ -1,4 +1,4 @@
-package com.dercg.leetcode.code.a027_removeElement;
+package com.dercg.leetcode.code.a027_RemoveElement;
 
 import java.util.Arrays;
 

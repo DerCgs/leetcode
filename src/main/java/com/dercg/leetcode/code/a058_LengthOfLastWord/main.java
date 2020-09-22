@@ -1,6 +1,4 @@
-package com.dercg.leetcode.code.a058_lengthOfLastWord;
-
-import java.util.IllegalFormatCodePointException;
+package com.dercg.leetcode.code.a058_LengthOfLastWord;
 
 public class main {
     /**

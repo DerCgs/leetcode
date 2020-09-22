@@ -78,8 +78,9 @@ public class main {
 
     static class Solution {
         public void recoverTree(TreeNode root) {
-            List<TreeNode> list = new ArrayList<>();
             Deque<TreeNode> stock = new LinkedList<>();
+            TreeNode swapOne = null, swapTwo = null, preNode = null;
+
             while (!stock.isEmpty() || root != null) {
                 while (root != null) {
                     stock.push(root);
@@ -87,19 +88,28 @@ public class main {
                 }
 
                 root = stock.pop();
-                list.add(root);
+                if (preNode != null) {
+                    Integer preVal = preNode.val;
+                    Integer currentVal = root.val;
+                    if (preVal >= currentVal) {
+                        if (swapOne == null) {
+                            swapOne = preNode;
+                        }
+                        swapTwo = root;
+                    }
+                }
+                preNode = root;
                 root = root.right;
+            }
+            if (swapOne != null) {
+                recover(swapOne, swapTwo);
             }
         }
 
-        public void recover(List<TreeNode> list, TreeNode swapNode) {
-            for (TreeNode item : list) {
-                if (swapNode.val < item.val) {
-                    Integer itemVal = item.val;
-                    item.val = (swapNode.val);
-                    swapNode.val = itemVal;
-                }
-            }
+        public void recover(TreeNode swapOne, TreeNode swapTwo) {
+            Integer itemVal = swapOne.val;
+            swapOne.val = swapTwo.val;
+            swapTwo.val = itemVal;
         }
     }
 }

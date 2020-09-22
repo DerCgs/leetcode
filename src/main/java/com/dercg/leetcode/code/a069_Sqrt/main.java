@@ -1,4 +1,4 @@
-package com.dercg.leetcode.code.a069_mySqrt;
+package com.dercg.leetcode.code.a069_Sqrt;
 
 public class main {
     /**

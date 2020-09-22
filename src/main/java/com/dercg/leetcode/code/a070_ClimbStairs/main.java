@@ -1,4 +1,4 @@
-package com.dercg.leetcode.code.a070_climbStairs;
+package com.dercg.leetcode.code.a070_ClimbStairs;
 
 public class main {
     /**

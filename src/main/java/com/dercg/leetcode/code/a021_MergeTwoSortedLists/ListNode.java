@@ -1,4 +1,4 @@
-package com.dercg.leetcode.code.a021_mergeTwoLists;
+package com.dercg.leetcode.code.a021_MergeTwoSortedLists;
 
 public class ListNode {
     int val;

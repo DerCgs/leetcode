@@ -1,4 +1,4 @@
-package com.dercg.leetcode.code.a035_searchInsert;
+package com.dercg.leetcode.code.a035_SearchInsertPosition;
 
 public class main {
     /*

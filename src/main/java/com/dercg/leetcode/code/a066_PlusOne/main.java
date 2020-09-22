@@ -1,4 +1,4 @@
-package com.dercg.leetcode.code.a066_plusOne;
+package com.dercg.leetcode.code.a066_PlusOne;
 
 import java.util.Arrays;
 

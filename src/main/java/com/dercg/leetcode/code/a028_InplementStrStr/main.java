@@ -1,4 +1,4 @@
-package com.dercg.leetcode.code.a028_strStr;
+package com.dercg.leetcode.code.a028_InplementStrStr;
 
 public class main {
     /**

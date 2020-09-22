@@ -1,4 +1,4 @@
-package com.dercg.leetcode.code.a067_addBinary;
+package com.dercg.leetcode.code.a067_AddBinary;
 
 public class main {
     /**

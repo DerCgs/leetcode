@@ -1,4 +1,4 @@
-package com.dercg.leetcode.code.a053_maxSubArray;
+package com.dercg.leetcode.code.a053_MaximunSubarray;
 
 public class main {
     /**

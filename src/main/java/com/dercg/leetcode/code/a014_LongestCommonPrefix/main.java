@@ -1,4 +1,4 @@
-package com.dercg.leetcode.code.a014_longestCommonPrefix;
+package com.dercg.leetcode.code.a014_LongestCommonPrefix;
 
 public class main {
     /**
