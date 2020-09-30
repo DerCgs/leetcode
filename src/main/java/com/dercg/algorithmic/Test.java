@@ -1,20 +1,15 @@
 package com.dercg.algorithmic;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 public class Test {
     public static void main(String[] args) {
-        Queue<Integer> queue = new LinkedList<>();
+        System.out.println("Ab".hashCode());
+        System.out.println("BC".hashCode());
+        System.out.println("Bb".hashCode());
+        System.out.println("CC".hashCode());
 
-        queue.add(3);
-        queue.add(5);
-        queue.add(6);
-        queue.add(2);
-        queue.add(1);
-
-        while (!queue.isEmpty()) {
-            System.out.println(queue.poll());
-        }
+        SortedMap<String,String> node = new TreeMap<>();
     }
 }
