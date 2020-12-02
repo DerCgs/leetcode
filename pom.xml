@@ -32,6 +32,11 @@
             <artifactId>algs4</artifactId>
             <version>1.0.3</version>
         </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.54.Final</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
