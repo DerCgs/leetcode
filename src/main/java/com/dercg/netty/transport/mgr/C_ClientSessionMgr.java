@@ -11,14 +11,14 @@ import io.netty.channel.Channel;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class ClientSessionMgr extends SessionMgr{
+public class C_ClientSessionMgr extends SessionMgr{
     private final Map<String, Map<String, Channel>> serviceChannels = new ConcurrentHashMap<>();
 
     private final ChannelWriteMgr channelWriteMgr;
 
     private final Map<Channel, ClientSessionInfo> sessions = new ConcurrentHashMap<>();
 
-    public ClientSessionMgr(ChannelWriteMgr channelWriteMgr) {
+    public C_ClientSessionMgr(ChannelWriteMgr channelWriteMgr) {
         this.channelWriteMgr = channelWriteMgr;
     }
 

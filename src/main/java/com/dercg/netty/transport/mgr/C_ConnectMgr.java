@@ -1,7 +1,7 @@
 package com.dercg.netty.transport.mgr;
 
-import com.dercg.netty.transport.codec.ClientEncoder;
-import com.dercg.netty.transport.codec.ServerDecoder;
+import com.dercg.netty.transport.codec.C_ClientEncoder;
+import com.dercg.netty.transport.codec.C_ServerDecoder;
 import com.dercg.netty.transport.module.ClientSessionInfo;
 import com.dercg.netty.transport.module.ReconnectInfo;
 import com.dercg.netty.transport.timer.DefaultTimer;
@@ -17,13 +17,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ConnectMgr {
+public class C_ConnectMgr {
     private final EventGroupMgr eventGroupMgr;
-    private final ClientSessionMgr clientSessionMgr;
+    private final C_ClientSessionMgr clientSessionMgr;
     private final ProtoHandlerMgr protoHandlerMgr;
     private final List<ReconnectInfo> reconnects = new ArrayList<>();
 
-    public ConnectMgr(EventGroupMgr eventGroupMgr, ClientSessionMgr clientSessionMgr, TimerMgr timerMgr, ProtoHandlerMgr protoHandlerMgr) {
+    public C_ConnectMgr(EventGroupMgr eventGroupMgr, C_ClientSessionMgr clientSessionMgr, TimerMgr timerMgr, ProtoHandlerMgr protoHandlerMgr) {
         this.eventGroupMgr = eventGroupMgr;
         this.clientSessionMgr = clientSessionMgr;
         this.protoHandlerMgr = protoHandlerMgr;
@@ -32,7 +32,7 @@ public class ConnectMgr {
         timerMgr.add(new DefaultTimer(this::reConnect, 5000));
     }
 
-    public ClientSessionMgr getClientSessionMgr() {
+    public C_ClientSessionMgr getClientSessionMgr() {
         return this.clientSessionMgr;
     }
 
@@ -87,8 +87,8 @@ public class ConnectMgr {
                 .handler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
-                        ch.pipeline().addLast(new ServerDecoder(ConnectMgr.this));
-                        ch.pipeline().addLast(new ClientEncoder(ConnectMgr.this));
+                        ch.pipeline().addLast(new C_ServerDecoder(C_ConnectMgr.this));
+                        ch.pipeline().addLast(new C_ClientEncoder(C_ConnectMgr.this));
                     }
                 });
         bootstrap.option(ChannelOption.SO_KEEPALIVE, true)

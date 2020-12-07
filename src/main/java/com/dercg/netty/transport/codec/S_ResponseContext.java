@@ -2,13 +2,13 @@ package com.dercg.netty.transport.codec;
 
 import com.google.protobuf.GeneratedMessage;
 
-public class ResponseContext {
+public class S_ResponseContext {
     private long requestId;
     private byte status;
 
     private GeneratedMessage result;
 
-    public ResponseContext() {
+    public S_ResponseContext() {
     }
 
     public long getRequestId() {

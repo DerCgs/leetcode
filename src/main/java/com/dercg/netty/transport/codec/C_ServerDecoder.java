@@ -1,7 +1,7 @@
 package com.dercg.netty.transport.codec;
 
-import com.dercg.netty.transport.mgr.ClientSessionMgr;
-import com.dercg.netty.transport.mgr.ConnectMgr;
+import com.dercg.netty.transport.mgr.C_ClientSessionMgr;
+import com.dercg.netty.transport.mgr.C_ConnectMgr;
 import com.dercg.netty.transport.protocol.ProtoType;
 import com.dercg.netty.transport.util.CRCUtil;
 import com.google.protobuf.GeneratedMessage;
@@ -11,13 +11,13 @@ import io.netty.channel.ChannelHandlerContext;
 
 import java.nio.ByteBuffer;
 
-public class ServerDecoder extends DecoderBase {
+public class C_ServerDecoder extends DecoderBase {
     private static final int MAX_CLIENT_PACKAGE_LENGTH = 1024;
 
-    private ClientSessionMgr clientSessionMgr;
-    private ConnectMgr connectMgr;
+    private C_ClientSessionMgr clientSessionMgr;
+    private C_ConnectMgr connectMgr;
 
-    public ServerDecoder(ConnectMgr connectMgr) {
+    public C_ServerDecoder(C_ConnectMgr connectMgr) {
         super(MAX_CLIENT_PACKAGE_LENGTH, connectMgr.getProtoHandlerMgr());
         this.connectMgr = connectMgr;
         this.clientSessionMgr = connectMgr.getClientSessionMgr();
