@@ -1,0 +1,11 @@
+syntax = "proto3";
+option java_package = "com.dercg.netty.transport.protocol";
+option java_outer_classname = "server_module_msg";
+
+message server_module_ping {
+
+}
+
+message server_module_ack {
+
+}

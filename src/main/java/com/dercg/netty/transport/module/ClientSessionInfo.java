@@ -1,4 +1,4 @@
-package com.dercg.netty.transport.mgr;
+package com.dercg.netty.transport.module;
 
 import com.dercg.netty.transport.module.SyncContext;
 import io.netty.channel.Channel;
@@ -57,5 +57,9 @@ public class ClientSessionInfo {
 
     public void setLastPingSec(int lastPingSec) {
         this.lastPingSec = lastPingSec;
+    }
+
+    public String getAddress() {
+        return this.remoteIp + this.remotePort;
     }
 }

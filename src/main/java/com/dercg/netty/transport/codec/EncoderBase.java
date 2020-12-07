@@ -20,10 +20,6 @@ public abstract class EncoderBase extends ChannelOutboundHandlerAdapter {
         }
     }
 
-    protected void write(ChannelHandlerContext ctx, ByteBuf byteBuf, ChannelPromise promise) throws Exception {
-        super.write(ctx, byteBuf, promise);
-    }
-
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         cause.printStackTrace();
