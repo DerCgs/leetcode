@@ -1,9 +1,9 @@
-package com.dercg.netty.transport.module;
+package com.dercg.netty.transport.mgr;
 
 import com.dercg.netty.transport.module.SyncContext;
 import io.netty.channel.Channel;
 
-public class ClientSessionInfo {
+public class C_ClientSessionInfo {
     private Channel channel;
     private SyncContext syncContext;
     private String serverName;

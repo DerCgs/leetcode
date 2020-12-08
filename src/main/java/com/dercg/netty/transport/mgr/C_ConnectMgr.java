@@ -2,8 +2,6 @@ package com.dercg.netty.transport.mgr;
 
 import com.dercg.netty.transport.codec.C_ClientEncoder;
 import com.dercg.netty.transport.codec.C_ServerDecoder;
-import com.dercg.netty.transport.module.ClientSessionInfo;
-import com.dercg.netty.transport.module.ReconnectInfo;
 import com.dercg.netty.transport.timer.DefaultTimer;
 import com.dercg.netty.transport.util.SystemTimeUtil;
 import io.netty.bootstrap.Bootstrap;
@@ -21,7 +19,7 @@ public class C_ConnectMgr {
     private final EventGroupMgr eventGroupMgr;
     private final C_ClientSessionMgr clientSessionMgr;
     private final ProtoHandlerMgr protoHandlerMgr;
-    private final List<ReconnectInfo> reconnects = new ArrayList<>();
+    private final List<C_ReconnectInfo> reconnects = new ArrayList<>();
 
     public C_ConnectMgr(EventGroupMgr eventGroupMgr, C_ClientSessionMgr clientSessionMgr, TimerMgr timerMgr, ProtoHandlerMgr protoHandlerMgr) {
         this.eventGroupMgr = eventGroupMgr;
@@ -56,7 +54,7 @@ public class C_ConnectMgr {
             channel = doConnect(ip, port);
 
             if (channel != null) {
-                ClientSessionInfo session = new ClientSessionInfo();
+                C_ClientSessionInfo session = new C_ClientSessionInfo();
                 session.setServerName(serviceName);
                 session.setChannel(channel);
                 session.setRemoteIp(ip);
@@ -73,7 +71,7 @@ public class C_ConnectMgr {
 
     public void onDisconnect(Channel channel) {
         if (clientSessionMgr.getSession(channel) != null) {
-            ReconnectInfo reconnectInfo = new ReconnectInfo();
+            C_ReconnectInfo reconnectInfo = new C_ReconnectInfo();
             reconnectInfo.setChannel(channel);
             reconnectInfo.setStartTime(SystemTimeUtil.getTimestamp());
             reconnects.add(reconnectInfo);
@@ -105,8 +103,8 @@ public class C_ConnectMgr {
     }
 
     private void reConnect() {
-        for (Iterator<ReconnectInfo> itr = reconnects.iterator(); itr.hasNext(); ) {
-            ReconnectInfo info = itr.next();
+        for (Iterator<C_ReconnectInfo> itr = reconnects.iterator(); itr.hasNext(); ) {
+            C_ReconnectInfo info = itr.next();
             long endTime = SystemTimeUtil.getTimestamp();
             int tryReconnectionTimeout = SessionMgr.headSecond;
             if (endTime - info.getStartTime() > tryReconnectionTimeout) {
@@ -114,7 +112,7 @@ public class C_ConnectMgr {
                 continue;
             }
 
-            ClientSessionInfo session = clientSessionMgr.getSession(info.getChannel());
+            C_ClientSessionInfo session = clientSessionMgr.getSession(info.getChannel());
             if (session == null) {
                 itr.remove();
                 continue;
@@ -125,7 +123,7 @@ public class C_ConnectMgr {
                 itr.remove();
                 clientSessionMgr.removeSession(info.getChannel());
                 String address = getAddress(session.getRemoteIp(), session.getRemotePort());
-                ClientSessionInfo newSession = new ClientSessionInfo();
+                C_ClientSessionInfo newSession = new C_ClientSessionInfo();
                 newSession.setServerName(session.getServerName());
                 newSession.setChannel(newChannel);
                 newSession.setRemoteIp(session.getRemoteIp());

@@ -1,11 +1,11 @@
 package com.dercg.netty.transport.codec;
 
-import com.google.protobuf.GeneratedMessage;
+import com.google.protobuf.GeneratedMessageV3;
 
 public class ResultInfo {
     private byte errorCode;
     private String message;
-    private GeneratedMessage data;
+    private GeneratedMessageV3 data;
 
     public byte getErrorCode() {
         return errorCode;
@@ -23,11 +23,11 @@ public class ResultInfo {
         this.message = message;
     }
 
-    public GeneratedMessage getData() {
+    public GeneratedMessageV3 getData() {
         return data;
     }
 
-    public void setData(GeneratedMessage data) {
+    public void setData(GeneratedMessageV3 data) {
         this.data = data;
     }
 }

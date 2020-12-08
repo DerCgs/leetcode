@@ -1,7 +1,6 @@
 package com.dercg.netty.transport.mgr;
 
 import com.dercg.netty.transport.codec.ResultInfo;
-import com.dercg.netty.transport.module.ClientSessionInfo;
 import com.dercg.netty.transport.module.SyncContext;
 import com.dercg.netty.transport.protocol.server_module_msg;
 import com.dercg.netty.transport.util.CloseUtil;
@@ -16,13 +15,13 @@ public class C_ClientSessionMgr extends SessionMgr{
 
     private final ChannelWriteMgr channelWriteMgr;
 
-    private final Map<Channel, ClientSessionInfo> sessions = new ConcurrentHashMap<>();
+    private final Map<Channel, C_ClientSessionInfo> sessions = new ConcurrentHashMap<>();
 
     public C_ClientSessionMgr(ChannelWriteMgr channelWriteMgr) {
         this.channelWriteMgr = channelWriteMgr;
     }
 
-    public void addSession(String serviceName, String address, ClientSessionInfo sessionInfo) {
+    public void addSession(String serviceName, String address, C_ClientSessionInfo sessionInfo) {
         sessions.put(sessionInfo.getChannel(), sessionInfo);
 
         Map<String, Channel> channels = serviceChannels.get(serviceName);
@@ -36,12 +35,12 @@ public class C_ClientSessionMgr extends SessionMgr{
         }
     }
 
-    public ClientSessionInfo getSession(Channel channel) {
+    public C_ClientSessionInfo getSession(Channel channel) {
         return sessions.get(channel);
     }
 
     public long getRequestId(Channel channel) {
-        ClientSessionInfo session = sessions.get(channel);
+        C_ClientSessionInfo session = sessions.get(channel);
         return session.getSyncContext().getSyncId();
     }
 
@@ -57,7 +56,7 @@ public class C_ClientSessionMgr extends SessionMgr{
 
     public void removeSession(Channel channel) {
         try {
-            ClientSessionInfo sessionInfo = getSession(channel);
+            C_ClientSessionInfo sessionInfo = getSession(channel);
 
             if (sessionInfo == null) {
                 return;
@@ -79,7 +78,7 @@ public class C_ClientSessionMgr extends SessionMgr{
     }
 
     public void updateSyncContext(SyncContext syncContext, Channel channel) {
-        ClientSessionInfo session = sessions.get(channel);
+        C_ClientSessionInfo session = sessions.get(channel);
         if (session != null) {
             session.setSyncContext(syncContext);
         }
@@ -87,7 +86,7 @@ public class C_ClientSessionMgr extends SessionMgr{
 
     // 发送心跳包
     public void sendPing() {
-        for (Map.Entry<Channel, ClientSessionInfo> entry : sessions.entrySet()) {
+        for (Map.Entry<Channel, C_ClientSessionInfo> entry : sessions.entrySet()) {
             server_module_msg.server_module_ping.Builder builder = server_module_msg.server_module_ping.newBuilder();
             sendMsg(entry.getKey(), builder.build());
         }
@@ -95,8 +94,8 @@ public class C_ClientSessionMgr extends SessionMgr{
 
     // 检测超时的session
     public void checkTimeoutSession() {
-        for (Map.Entry<Channel, ClientSessionInfo> entry : sessions.entrySet()) {
-            ClientSessionInfo sessionInfo = entry.getValue();
+        for (Map.Entry<Channel, C_ClientSessionInfo> entry : sessions.entrySet()) {
+            C_ClientSessionInfo sessionInfo = entry.getValue();
 
             int curTime = SystemTimeUtil.getTimestamp();
 
@@ -109,7 +108,7 @@ public class C_ClientSessionMgr extends SessionMgr{
     }
 
     public void onServerProtoCome(long requestId, Channel channel, ResultInfo result) {
-        ClientSessionInfo sessionInfo = getSession(channel);
+        C_ClientSessionInfo sessionInfo = getSession(channel);
         if (sessionInfo == null) {
             return;
         }
@@ -128,7 +127,7 @@ public class C_ClientSessionMgr extends SessionMgr{
     }
 
     public void pingHandler(Channel channel) {
-        ClientSessionInfo sessionInfo = getSession(channel);
+        C_ClientSessionInfo sessionInfo = getSession(channel);
 
         if (sessionInfo == null) {
             return;

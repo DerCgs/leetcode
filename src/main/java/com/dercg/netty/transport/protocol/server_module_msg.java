@@ -710,7 +710,7 @@ public final class server_module_msg {
       }
 
       @java.lang.Override
-      public com.dercg.netty.transport.protocol.server_module_msg.server_module_ack build() {
+      public server_module_ack build() {
         com.dercg.netty.transport.protocol.server_module_msg.server_module_ack result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);

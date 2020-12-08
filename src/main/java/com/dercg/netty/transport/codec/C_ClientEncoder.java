@@ -4,7 +4,7 @@ import com.dercg.netty.transport.mgr.C_ClientSessionMgr;
 import com.dercg.netty.transport.mgr.C_ConnectMgr;
 import com.dercg.netty.transport.mgr.ProtoHandlerMgr;
 import com.dercg.netty.transport.util.CRCUtil;
-import com.google.protobuf.GeneratedMessage;
+import com.google.protobuf.GeneratedMessageV3;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufOutputStream;
 import io.netty.channel.ChannelHandlerContext;
@@ -23,17 +23,17 @@ public class C_ClientEncoder extends EncoderBase {
 
     @Override
     public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
-        if (msg instanceof GeneratedMessage) {
-            GeneratedMessage generatedMessage = (GeneratedMessage) msg;
-            writeImpl(ctx, promise, generatedMessage);
+        if (msg instanceof GeneratedMessageV3) {
+            GeneratedMessageV3 GeneratedMessageV3 = (GeneratedMessageV3) msg;
+            writeImpl(ctx, promise, GeneratedMessageV3);
         } else {
             throw new Exception("not support parameter");
         }
     }
 
-    private void writeImpl(ChannelHandlerContext ctx, ChannelPromise promise, GeneratedMessage generatedMessage) throws Exception {
-        int protoEnumInt = protoHandlerMgr.getProtoEnumInt(generatedMessage.getClass());
-        int protoLength = generatedMessage.getSerializedSize();
+    private void writeImpl(ChannelHandlerContext ctx, ChannelPromise promise, GeneratedMessageV3 GeneratedMessageV3) throws Exception {
+        int protoEnumInt = protoHandlerMgr.getProtoEnumInt(GeneratedMessageV3.getClass());
+        int protoLength = GeneratedMessageV3.getSerializedSize();
 
         int finalProtoLen = 0;
         ByteBuf byteBuf = null;
@@ -50,12 +50,12 @@ public class C_ClientEncoder extends EncoderBase {
         ByteBuffer byteBuffer = ByteBuffer.allocate(finalProtoLen - 8);
         byteBuffer.putLong(requestId);
         byteBuffer.putLong(protoEnumInt);
-        byteBuffer.put(generatedMessage.toByteArray());
+        byteBuffer.put(GeneratedMessageV3.toByteArray());
         long sign = CRCUtil.Generic(byteBuffer.array());
         byteBuf.writeLong(sign);
 
         try (ByteBufOutputStream out = new ByteBufOutputStream(byteBuf)) {
-            generatedMessage.writeTo(out);
+            GeneratedMessageV3.writeTo(out);
 
             super.write(ctx, out.buffer(), promise);
         }

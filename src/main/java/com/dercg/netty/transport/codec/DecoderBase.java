@@ -1,7 +1,7 @@
 package com.dercg.netty.transport.codec;
 
 import com.dercg.netty.transport.mgr.ProtoHandlerMgr;
-import com.google.protobuf.GeneratedMessage;
+import com.google.protobuf.GeneratedMessageV3;
 import com.google.protobuf.Parser;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufInputStream;
@@ -37,11 +37,11 @@ public abstract class DecoderBase extends LengthFieldBasedFrameDecoder {
         this.protoHandlerMgr = protoHandlerMgr;
     }
 
-    protected GeneratedMessage readFrame(ByteBuf buffer, int protoEnumInt) throws Exception {
+    protected GeneratedMessageV3 readFrame(ByteBuf buffer, int protoEnumInt) throws Exception {
         ByteBufInputStream is = new ByteBufInputStream(buffer);
         ProtoParser parserCache = THREAD_LOCAL_PARSER.get();
         Parser<?> parser = parserCache.getParser(protoEnumInt);
-        return (GeneratedMessage) parser.parseFrom(is);
+        return (GeneratedMessageV3) parser.parseFrom(is);
     }
 
     @Override

@@ -1,10 +1,8 @@
 package com.dercg.netty.transport.codec;
 
-import com.google.protobuf.GeneratedMessage;
-import io.netty.buffer.ByteBuf;
+import com.google.protobuf.GeneratedMessageV3;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelOutboundHandlerAdapter;
-import io.netty.channel.ChannelPromise;
 
 public abstract class EncoderBase extends ChannelOutboundHandlerAdapter {
     protected final ThreadLocal<EncoderMrg> localEncoderMrg = new ThreadLocal<EncoderMrg>() {
@@ -15,7 +13,7 @@ public abstract class EncoderBase extends ChannelOutboundHandlerAdapter {
     };
 
     protected final class EncoderMrg {
-        protected int get(GeneratedMessage protoObj) {
+        protected int get(GeneratedMessageV3 protoObj) {
             return 0;
         }
     }

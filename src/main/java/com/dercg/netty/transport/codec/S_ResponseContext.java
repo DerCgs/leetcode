@@ -1,12 +1,12 @@
 package com.dercg.netty.transport.codec;
 
-import com.google.protobuf.GeneratedMessage;
+import com.google.protobuf.GeneratedMessageV3;
 
 public class S_ResponseContext {
     private long requestId;
     private byte status;
 
-    private GeneratedMessage result;
+    private GeneratedMessageV3 result;
 
     public S_ResponseContext() {
     }
@@ -27,11 +27,11 @@ public class S_ResponseContext {
         this.status = status;
     }
 
-    public GeneratedMessage getResult() {
+    public GeneratedMessageV3 getResult() {
         return result;
     }
 
-    public void setResult(GeneratedMessage result) {
+    public void setResult(GeneratedMessageV3 result) {
         this.result = result;
     }
 }

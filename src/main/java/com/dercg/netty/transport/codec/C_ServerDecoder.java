@@ -4,7 +4,7 @@ import com.dercg.netty.transport.mgr.C_ClientSessionMgr;
 import com.dercg.netty.transport.mgr.C_ConnectMgr;
 import com.dercg.netty.transport.protocol.ProtoType;
 import com.dercg.netty.transport.util.CRCUtil;
-import com.google.protobuf.GeneratedMessage;
+import com.google.protobuf.GeneratedMessageV3;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
@@ -33,7 +33,7 @@ public class C_ServerDecoder extends DecoderBase {
 
         ByteBuffer byteBuffer = ByteBuffer.allocate(length - 8);
 
-        GeneratedMessage result = null;
+        GeneratedMessageV3 result = null;
         ResultInfo resultInfo = new ResultInfo();
 
         if (protoEnumInt == ProtoType.SERVER_MODULE_ACK) {

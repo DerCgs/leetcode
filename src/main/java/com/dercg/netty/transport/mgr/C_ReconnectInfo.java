@@ -1,8 +1,8 @@
-package com.dercg.netty.transport.module;
+package com.dercg.netty.transport.mgr;
 
 import io.netty.channel.Channel;
 
-public class ReconnectInfo {
+public class C_ReconnectInfo {
     private Channel channel;
 
     private long startTime;
