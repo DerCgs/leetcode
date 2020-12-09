@@ -32,6 +32,10 @@ public class ServiceEntry {
         this.port = port;
     }
 
+    public String address() {
+        return ip + ":" + port;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
