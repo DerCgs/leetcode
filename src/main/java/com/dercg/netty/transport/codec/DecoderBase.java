@@ -37,6 +37,11 @@ public abstract class DecoderBase extends LengthFieldBasedFrameDecoder {
         this.protoHandlerMgr = protoHandlerMgr;
     }
 
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        super.channelRead(ctx, msg);
+    }
+
     protected GeneratedMessageV3 readFrame(ByteBuf buffer, int protoEnumInt) throws Exception {
         ByteBufInputStream is = new ByteBufInputStream(buffer);
         ProtoParser parserCache = THREAD_LOCAL_PARSER.get();

@@ -51,8 +51,8 @@ public abstract class ModuleServerService {
         entry.setServiceName(getServiceName());
         entry.setIp(endPoint.getIp());
         entry.setPort(endPoint.getPort());
-
-        serviceRegistry.registerService(entry);
+// TODO
+//        serviceRegistry.registerService(entry);
     }
 
     public void onClientProtoCome(EventInfo data) {

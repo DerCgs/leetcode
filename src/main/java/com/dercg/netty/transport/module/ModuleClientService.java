@@ -1,5 +1,6 @@
 package com.dercg.netty.transport.module;
 
+import com.dercg.netty.transport.Server;
 import com.dercg.netty.transport.codec.ResultInfo;
 import com.dercg.netty.transport.codec.StatusCode;
 import com.dercg.netty.transport.mgr.C_ClientSessionMgr;
@@ -100,16 +101,18 @@ public abstract class ModuleClientService {
     }
 
     public ServiceEntry getServiceAddress(String serviceName, ProviderStrategyType strategyType) {
-        try {
-            ServiceInstance<ServiceEntry> instance = discover.getService(serviceName, strategyType);
-            if (instance == null) {
-                return null;
-            }
-            return instance.getPayload();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        return Server.getServerEntry();
+        // TODO
+//        try {
+//            ServiceInstance<ServiceEntry> instance = discover.getService(serviceName, strategyType);
+//            if (instance == null) {
+//                return null;
+//            }
+//            return instance.getPayload();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
     }
 
     public void init() {

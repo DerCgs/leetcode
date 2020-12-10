@@ -20,7 +20,7 @@ public class ClientNonLockQueue {
         ThreadFactory guavaThreadFactory = new ThreadFactoryBuilder().setNameFormat("C_NonLockQueue-pool-").build();
         ClientEventFactory eventFactory = new ClientEventFactory();
 
-        disruptor = new Disruptor<ClientEventInfo>(eventFactory, INIT_LOCAL_EVENT_CAPACITY, guavaThreadFactory, ProducerType.MULTI, YIELDING_WAIT);
+        disruptor = new Disruptor<>(eventFactory, INIT_LOCAL_EVENT_CAPACITY, guavaThreadFactory, ProducerType.MULTI, YIELDING_WAIT);
         disruptor.handleEventsWith(eventHandler);
 
         ringBuffer = disruptor.getRingBuffer();

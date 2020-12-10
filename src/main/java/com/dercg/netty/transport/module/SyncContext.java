@@ -26,7 +26,7 @@ public class SyncContext {
     }
 
     public void setLatch(CountDownLatch latch) {
-
+        this.latch = latch;
     }
 
     public ResultInfo getResult() {

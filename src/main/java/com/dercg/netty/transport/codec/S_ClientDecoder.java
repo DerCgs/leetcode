@@ -69,7 +69,7 @@ public class S_ClientDecoder extends DecoderBase {
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         super.channelInactive(ctx);
 
-        System.out.println("服务器连接关闭");
+        System.out.println("服务器端 连接关闭"+ctx.channel().id());
         EventInfo eventInfo = new EventInfo();
         eventInfo.setEventType(EventType.CLIENT_DISCONNECT);
         eventInfo.setChannel(ctx.channel());
@@ -84,5 +84,11 @@ public class S_ClientDecoder extends DecoderBase {
         eventInfo.setEventType(EventType.CLIENT_REGISTER);
         eventInfo.setChannel(ctx.channel());
         NonLockQueue.publish(eventInfo);
+    }
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        super.channelActive(ctx);
+        System.out.println("建立连接"+ctx.channel().id());
     }
 }
