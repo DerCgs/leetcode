@@ -7,6 +7,8 @@ import io.netty.handler.codec.ByteToMessageDecoder;
 import java.util.List;
 
 // ByteToMessageDecoder is an implementation of ChannelInboundHandler which makes it easy to deal with the fragmentation issue.
+// 拆包解决方案二
+// 继承Decoder
 public class TimeDecoder extends ByteToMessageDecoder {
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {

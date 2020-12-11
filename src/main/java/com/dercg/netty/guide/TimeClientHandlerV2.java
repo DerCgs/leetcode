@@ -6,6 +6,8 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 
 import java.util.Date;
 
+// 拆包解决方案一
+// 定义全局变量保存 不完整的buffer数据，等到后续部分的buffer到达
 public class TimeClientHandlerV2 extends ChannelInboundHandlerAdapter {
     private ByteBuf buf;
 
